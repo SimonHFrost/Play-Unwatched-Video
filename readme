@@ -1,5 +1,3 @@
-I made this script auto run at 7:35 so that a video will play on my projector and wake me up in the morning.
+I made this script run at 7:35 by the task scheduler so that a video will play on my projector and wake me up in the morning.
 
-It plays the first file it finds that doesn't have 'watched.mp4' in it's name.
-
-Yet to make it change the filename after it's watched, but that shouldn't take too long.
+It plays the first file it finds that doesn't have 'watched.mp4' in it's name and then sets then tags the one it plays as 'watched'
