@@ -5,13 +5,11 @@ function Get-ScriptDirectory
 }
 
 $videoDirectory = Get-ScriptDirectory
-$watchedTag = ' - WATCHED'
-
 cd $videoDirectory
-$videos = get-childitem . -exclude *$watchedTag*
-$currentVid = $videos[0]
-$currentExtension = $videos[0].extension
 
-$newName = "$currentVid$watchedTag$currentExtension" 
-rename-item $currentVid $newName
-Invoke-item $newName
+$videos = get-childitem . -exclude "watched"
+$currentVid = $videos[0].name
+
+move $currentVid "watched"
+$newPath = "$videoDirectory\watched\$currentVid"
+Invoke-item $newPath
