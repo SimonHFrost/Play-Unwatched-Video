@@ -5,11 +5,18 @@ function Get-ScriptDirectory
 }
 
 $videoDirectory = Get-ScriptDirectory
+
 cd $videoDirectory
 
-$videos = get-childitem . -exclude "watched"
+$temp = Test-Path "$videoDirectory\Watched"
+if(!$temp) {
+    mkdir "Watched"
+}
+
+$videos = get-childitem . -exclude "Watched"
 $currentVid = $videos[0].name
 
-move $currentVid "watched"
-$newPath = "$videoDirectory\watched\$currentVid"
+move $currentVid "Watched"
+$newPath = "$videoDirectory\Watched\$currentVid"
+
 Invoke-item $newPath
